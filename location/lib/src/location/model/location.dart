@@ -86,9 +86,24 @@ class Location {
     errorInfo = json['errorInfo'] as String;
     floor = json['floor'] as int;
     gpsAccuracyStatus = json['gpsAccuracyStatus'] as int;
-    isFixLastLocation = json['isFixLastLocation'] as bool;
-    isMock = json['isMock'] as bool;
-    isOffset = json['isOffset'] as bool;
+    var isfix = json['isFixLastLocation'];
+    if (isfix is bool) {
+      isFixLastLocation = isfix;
+    } else {
+      isFixLastLocation = isfix == 1;
+    }
+    var ismock = json['isMock'];
+    if (ismock is bool) {
+      isMock = ismock;
+    }else{
+      isMock = ismock == 1;
+    }
+    var isoffset = json['isOffset'];
+    if (isoffset is bool) {
+      isOffset = isoffset;
+    }else{
+      isOffset = isoffset == 1;
+    }
     latitude = json['latitude'] as num;
     locationDetail = json['locationDetail'] as String;
     locationQualityReport = json['locationQualityReport'] != null
